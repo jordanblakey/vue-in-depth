@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Class and Style Bindings</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app" class="boo bar">
+  <!--Classes on the root will be overwritten-->
+</div>
+
+<script>
+  vm = new Vue({
+    el: '#app',
+    data: {
+      isActive: true,
+      hasError: false,
+      error: null,
+      activeClass: 'active',
+      errorClass: 'text-danger',
+      styleObject: {
+        color: 'red',
+        'font-size': '20px'
+      }
+    },
+    template: `
+      <div class="static" v-bind:class="classObject" class="foo bar">
+        <p v-bind:style="styleObject">isActive: {{ isActive }}</p>
+        <p>error: {{ error }}</p>
+        <button v-on:click="toggleError">Toggle hasError (appends class via v-bind:class)</button>
+        <button v-on:click="toggleActive">Toggle isActive (appends class via v-bind:class)</button>
+        <p v-bind:class="[activeClass, errorClass]">This takes an array of properties with class names. Could optionally
+        take an array of strings.</p>
+        <p v-bind:class="[isActive ? activeClass : '', errorClass]">This takes and array with a ternary to show/hide</p>
+        <p v-bind:class="[{ active: isActive }, errorClass]">This uses object syntax with the key as the class name, and
+        the value evaluated for truthiness</p>
+      </div>
+    `,
+    methods: {
+      toggleError: function() {
+        if (!this.error) {
+          this.error = {
+            type: 'fatal'
+          }
+        } else {
+          this.error = null
+        }
+      },
+      toggleActive: function() {
+        this.isActive = !this.isActive
+      }
+    },
+    computed: {
+      classObject: function() {
+        return {
+          active: this.isActive && !this.error,
+          'text-danger': this.error && this.error.type === 'fatal'
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>
