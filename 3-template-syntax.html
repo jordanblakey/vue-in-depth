@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Creating a Vue Instance</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script>
+  // Create the root Vue instance
+  let data = {
+    msg: 'I\'m a message.',
+    rawHtml: `<span style="color: red">This should be red.</span>`
+  }
+
+  let vm = new Vue({
+    el: '#app',
+    options: {
+      data: data
+    },
+    data: data,
+    template: `
+      <div>
+        <p>Message: {{foo}}</p>
+        <p v-once> This will never change: {{ msg }}</p>
+        <p>using mustaches: {{ rawHtml }}</p>
+        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+        <button v-on:click="clickHandler">Click it</button>
+      </div>
+    `
+  })
+</script>
+</body>
+</html>
