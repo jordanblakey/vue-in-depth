@@ -25,6 +25,13 @@
       styleObject: {
         color: 'red',
         'font-size': '20px'
+      },
+      baseStyles: {
+       fontSize: '30px',
+       color: 'red'
+      },
+      overridingStyles: {
+        color: 'green'
       }
     },
     template: `
@@ -38,7 +45,11 @@
         <p v-bind:class="[isActive ? activeClass : '', errorClass]">This takes and array with a ternary to show/hide</p>
         <p v-bind:class="[{ active: isActive }, errorClass]">This uses object syntax with the key as the class name, and
         the value evaluated for truthiness</p>
+        <p v-bind:style="[baseStyles, overridingStyles]">Testing multiple style objects and overriding via v-bind:styles</p>
+        <div v-bind: style="{display: ['-webkit-box', '-ms-flexbox', 'flex']}">This example uses an array of values.
+        The last supported value will be used by the style property. Properties are auto-prefixed by Vue.</div>
       </div>
+
     `,
     methods: {
       toggleError: function() {
