@@ -15,24 +15,51 @@
 
 <script>
   // Create the root Vue instance
-  let data = {
-    msg: 'I\'m a message.',
-    rawHtml: `<span style="color: red">This should be red.</span>`
-  }
 
   let vm = new Vue({
     el: '#app',
-    options: {
-      data: data
+    options: {},
+    data: {
+      msg: 'I\'m a message.',
+      rawHtml: `<span style="color: red">This should be red.</span>`,
+      dynamicId: 'injectedId',
+      isButtonDisabled: true,
+      number: 5,
+      ok: true,
+      message: 'I\'m a message, too.',
+      id: 999
     },
-    data: data,
+    methods: {
+      clickHandler: function() {
+        console.log('Clicked')
+      }
+    },
     template: `
       <div>
-        <p>Message: {{foo}}</p>
+        <p>Message: {{ msg }}</p>
         <p v-once> This will never change: {{ msg }}</p>
         <p>using mustaches: {{ rawHtml }}</p>
         <p>Using v-html directive: <span v-html="rawHtml"></span></p>
-        <button v-on:click="clickHandler">Click it</button>
+        <button v-on:click="clickHandler" >
+          Click it
+        </button>
+        <button v-bind:disabled="isButtonDisabled" >
+          Disabled with v-bind:disabled
+        </button>
+        <div v-bind:id="dynamicId">My id was changed with directive v-bind:id</div>
+        <p>
+          Javascript Expressions:
+          number + 1 = {{ number + 1 }}
+          is ok truthy? {{ ok ? 'YES' : 'NO' }}
+          {{ message.split('').reverse().join('') }}
+        </p>
+        <div v-bind:id="'list-' + id">My id was set using concatenation inside a v-bind:id directive's attribute</div>
+        <p>Only statements work, not flow control, with the exception of ternary expressions.</p>
+        <p>Some directives take an arg, for example v-bind:href or v-on:click.</p>
+        <p>Shorthand for v-bind and v-on = :href, @click</p>
+
+        <p>Additionally some take a modifier, as in v-on:submit.prevent="onSubmit"</p>
+
       </div>
     `
   })
