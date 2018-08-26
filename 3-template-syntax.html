@@ -27,7 +27,12 @@
       number: 5,
       ok: true,
       message: 'I\'m a message, too.',
-      id: 999
+      id: 999,
+      computed: {
+        reversedMessage: function() {
+          return this.message.split('').reverse().join('')
+        }
+      }
     },
     methods: {
       clickHandler: function() {

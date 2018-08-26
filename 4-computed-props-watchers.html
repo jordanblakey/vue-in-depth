@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue: Computed Properties</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <h3>Computed Properties</h3>
+  <p>Original message: {{ message }}</p>
+  <p>Computed reversed message: "{{ reversedMessage }}"</p>
+  <button v-on:dblclick="revOrig">Doubleclick to Reverse</button>
+  <p>Instead of a computed property, Invoking a method as a statement: {{ strReverse(message) }}</p>
+  <p>Date.now() from a coputed property {{ now }}</p>
+  <p>Invoked directly (This is not cached, while computed properties are): {{ Date.now() }}</p>
+
+  <h3>Watchers</h3>
+  <p>Watched values firstName and lastName concatenate to automatically to create fullName: {{ fullName }}</p>
+  <button v-on:click="changeLast">Click to change last name.</button>
+  <input v-model="fullNameGetSet">
+
+  <div>
+    <p>
+      Ask a yes/no question
+      <input v-model="question">
+    </p>
+    <p>{{ answer }}</p>
+  </div>
+
+
+</div>
+
+<script>
+  let vm = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello',
+      firstName: 'Foo',
+      lastName: 'Bar',
+      fullName: 'Foo Bar',
+      question: '',
+      answer: 'I cannot give you an answer until you ask a question!'
+    },
+    watch: {
+      question: function (newQuestion, oldQuestion) {
+        this.answer = 'Waiting for you to stop typing...'
+        this.debouncedGetAnswer()
+      },
+      firstName: function (val) {
+        this.fullName = val + ' ' + this.lastName
+      },
+      lastName: function (val) {
+        this.fullName = this.firstName + ' ' + val
+      }
+    },
+    created: function () {
+      this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
+    },
+    computed: {
+      reversedMessage: function () {
+        return this.strReverse(this.message)
+      },
+      now: function () {
+        return Date.now()
+      },
+      fullNameComputed: function () {
+        // This is effectively a getter
+        // Since no setter is defined, the return value won't change
+        return this.firstName + ' ' + this.lastName
+      },
+      fullNameGetSet: {
+        get: function () {
+          return this.firstName + ' ' + this.lastName
+        },
+        // This fires when the computed value is updated
+        set: function (newValue) {
+          let names = newValue.split(' ')
+          this.firstName = names[0]
+          this.lastName = names[names.length - 1]
+        }
+      }
+
+    },
+    methods: {
+      getAnswer: function() {
+        if (this.question.indexOf('?') === -1) {
+          this.answer = 'Questions usually contain a question mark. ;-)'
+          return
+        }
+        this.answer = 'Thinking....'
+        let vm = this
+        axios.get('https://yesno.wtf/api')
+          .then(function(response) {
+            vm.answer = _.capitalize(response.data.answer)
+          })
+          .catch(function(error) {
+            vm.answer = 'Error! Could not reach the API. ' + error
+          })
+      },
+      revOrig: function () {
+        this.message = this.strReverse(this.message)
+      },
+      strReverse: function (msg) {
+        return msg.split('').reverse().join('')
+      },
+      changeLast: function () {
+        this.lastName = "Blakey"
+      }
+    }
+  })
+
+  vm.firstName = 'Jordan'
+</script>
+</body>
+</html>

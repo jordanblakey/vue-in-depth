@@ -2,9 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49d8b8b5-9108-4e6c-be21-f390abd6c727" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/4-computed.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/019c8ed13da309271bf359087cb69c9e.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/22eff97075409cfc0bcdb2d7fcf0cea4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/85359fc999440a269ea5637f166ccb37.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/8fec3191d5fad9749e01ee6b26801c7e.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/b08996f60b8f780a22adffa5f2be8808.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c7627028eb278323020286fc5f446efc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/d18d83814f6631d9cf53c07b85d32ee0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/e90d137f2b33356409796d3bef840250.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/f04f61aa1c10db58db0822ab0c03067e.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/f1c8c73c57c1384aa85f22337095eeb6.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2-instance.html" beforeDir="false" afterPath="$PROJECT_DIR$/2-instance.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3-template-syntax.html" beforeDir="false" afterPath="$PROJECT_DIR$/3-template-syntax.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.vue" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -71,28 +84,42 @@
     <session id="1700046214">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="2733" />
+          <entry key="html" value="5683" />
+          <entry key="md" value="542" />
+          <entry key="vue" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="2733" />
+          <entry key="HTML" value="5683" />
+          <entry key="Markdown" value="542" />
+          <entry key="Vue.js" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="2" />
+          <entry key="editorconfig" value="1" />
+          <entry key="html" value="5" />
+          <entry key="http" value="1" />
+          <entry key="md" value="3" />
+          <entry key="vue" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="2" />
+          <entry key="HTML" value="5" />
+          <entry key="Markdown" value="1" />
+          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="Scratch" value="3" />
+          <entry key="Vue.js" value="2" />
         </counts>
       </usages-collector>
     </session>
@@ -103,13 +130,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/3-template-syntax.html">
+        <entry file="file://$PROJECT_DIR$/4-computed.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="58" column="56" selection-start-line="58" selection-start-column="56" selection-end-line="58" selection-end-column="56" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="412">
+              <caret line="102" column="12" lean-forward="true" selection-start-line="102" selection-start-column="12" selection-end-line="102" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/1-intro.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="237">
+              <caret line="42" column="12" selection-start-line="42" selection-end-line="43" />
             </state>
           </provider>
         </entry>
@@ -121,6 +154,7 @@
       <find>head</find>
       <find>msg</find>
       <find>click</find>
+      <find>input</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -142,11 +176,20 @@
         <option value="$PROJECT_DIR$/1-intro.html" />
         <option value="$PROJECT_DIR$/2-instance.html" />
         <option value="$PROJECT_DIR$/3-template-syntax.html" />
+        <option value="$PROJECT_DIR$/App.vue" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/4-computed.html" />
       </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
@@ -157,7 +200,6 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="720" />
     <option name="y" value="23" />
     <option name="width" value="720" />
     <option name="height" value="877" />
@@ -236,10 +278,6 @@
               <item name="vue-cc" type="b2602c69:ProjectViewProjectNode" />
               <item name="vue-cc" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="vue-cc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -247,12 +285,15 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="new&#9;ACTION&#9;NewGroup&#10;surround&#9;ACTION&#9;SurroundWith&#10;open brow&#9;ACTION&#9;OpenInBrowserGroup&#10;rename &#9;ACTION&#9;RenameFile&#10;new line&#9;ACTION&#9;EditorStartNewLine&#10;rename&#9;ACTION&#9;RenameFile&#10;term&#9;ACTION&#9;ActivateTerminalToolWindow&#10;struc&#9;ACTION&#9;ActivateStructureToolWindow&#10;stru&#9;ACTION&#9;ActivateStructureToolWindow&#10;event&#9;ACTION&#9;ActivateEventLogToolWindow&#10;all occ&#9;ACTION&#9;SelectAllOccurrences&#10;to tabs&#9;ACTION&#9;ConvertIndentsToTabs&#10;fold&#9;ACTION&#9;FoldingGroup&#10;open&#9;ACTION&#9;OpenFile&#10;bookmar&#9;ACTION&#9;EditBookmarksGroup&#10;bookmark&#9;ACTION&#9;GotoBookmark0&#10;close&#9;ACTION&#9;CloseAllUnpinnedEditors&#10;head&#9;null&#9;null&#10;head'&#9;null&#9;null" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="open br&#9;ACTION&#9;OpenInBrowser&#10;new&#9;ACTION&#9;NewGroup&#10;surround&#9;ACTION&#9;SurroundWith&#10;open brow&#9;ACTION&#9;OpenInBrowserGroup&#10;rename &#9;ACTION&#9;RenameFile&#10;new line&#9;ACTION&#9;EditorStartNewLine&#10;rename&#9;ACTION&#9;RenameFile&#10;term&#9;ACTION&#9;ActivateTerminalToolWindow&#10;struc&#9;ACTION&#9;ActivateStructureToolWindow&#10;stru&#9;ACTION&#9;ActivateStructureToolWindow&#10;event&#9;ACTION&#9;ActivateEventLogToolWindow&#10;all occ&#9;ACTION&#9;SelectAllOccurrences&#10;to tabs&#9;ACTION&#9;ConvertIndentsToTabs&#10;fold&#9;ACTION&#9;FoldingGroup&#10;open&#9;ACTION&#9;OpenFile&#10;bookmar&#9;ACTION&#9;EditBookmarksGroup&#10;bookmark&#9;ACTION&#9;GotoBookmark0&#10;close&#9;ACTION&#9;CloseAllUnpinnedEditors&#10;head&#9;null&#9;null&#10;head'&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Markdown" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -288,12 +329,13 @@
       <workItem from="1535217174825" duration="104000" />
       <workItem from="1535217293197" duration="169000" />
       <workItem from="1535217488983" duration="5342000" />
-      <workItem from="1535246167548" duration="4329000" />
+      <workItem from="1535246167548" duration="9141000" />
+      <workItem from="1535263912081" duration="2925000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21328000" />
+    <option name="totallyTimeSpent" value="29065000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -305,10 +347,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="720" y="23" width="720" height="877" extended-state="0" />
+    <frame x="0" y="23" width="720" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49544865" visible="true" weight="0.18888889" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49544865" visible="true" weight="0.19456366" />
       <window_info id="Structure" order="1" sideWeight="0.50455135" side_tool="true" weight="0.19168429" />
       <window_info id="Favorites" order="2" sideWeight="0.50541514" side_tool="true" weight="0.19168429" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -321,7 +363,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32025316" />
       <window_info anchor="bottom" id="REST Client" order="9" weight="0.38471338" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.7230444" visible="true" weight="0.24069479" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.7230444" weight="0.30063695" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.2769556" side_tool="true" weight="0.24187256" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -337,13 +379,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/rest-api.http">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
@@ -395,13 +430,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json" />
     <entry file="file://$PROJECT_DIR$/yarn.lock" />
-    <entry file="file://$PROJECT_DIR$/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../web-widget/node_modules/uri-js/tests/tests.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -416,33 +444,48 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="45" column="28" lean-forward="true" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.editorconfig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1-intro.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-834">
-          <caret line="37" column="20" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/3-template-syntax.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="58" column="56" selection-start-line="58" selection-start-column="56" selection-end-line="58" selection-end-column="56" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="153">
+          <caret line="9" column="59" lean-forward="true" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.vue" />
+    <entry file="file://$PROJECT_DIR$/App.vue" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.md" />
+    <entry file="file://$PROJECT_DIR$/.editorconfig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="323">
+            <caret line="19" column="3" lean-forward="true" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1-intro.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="42" column="12" selection-start-line="42" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4-computed.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="102" column="12" lean-forward="true" selection-start-line="102" selection-start-column="12" selection-end-line="102" selection-end-column="12" />
         </state>
       </provider>
     </entry>
