@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue: Conditional Rendering</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <h3>v-if, v-else</h3>
+  <template v-if="ok">
+    <h1>Yes</h1>
+    <p>Apply the v-if directive to a 'template' element to conditionally show multiple elements</p>
+  </template>
+  <h1 v-else>No</h1>
+
+  <div v-if="Math.random() > 0.5">
+    Now you see me
+  </div>
+  <div v-else>
+    Now you don't
+  </div>
+
+  <h3>v-if, v-else-if, v-else</h3>
+  <div v-if="type === 'A'">A</div>
+  <div v-else-if="type === 'B'">B</div>
+  <div v-else-if="type === 'C'">C</div>
+  <div v-else>Not A/B/C</div>
+
+  <div>
+    <p>This example will reuse the input when the type is toggled</p>
+    <template v-if="loginType === 'username'">
+      <label>Username</label>
+      <input placeholder="Enter your username">
+    </template>
+    <template v-else>
+      <label>Email</label>
+      <input placeholder="Enter your email address">
+    </template>
+    <button v-on:click="toggleLoginType">Toggle login type</button>
+  </div>
+
+  <div>
+    <p>Using the key attr, this example will render a unique input, destroying its value.</p>
+    <template v-if="loginType === 'username'">
+      <label>Username</label>
+      <input placeholder="Enter your username" key="username-input">
+    </template>
+    <template v-else>
+      <label>Email</label>
+      <input placeholder="Enter your email address" key="username-email">
+    </template>
+    <button v-on:click="toggleLoginType">Toggle login type</button>
+  </div>
+
+  <h1 v-show="ok">Hello! Unlike v-if/v-else-if/v-else, Using v-show conditionally toggles the display CSS prop. Use
+  v-show for values you expect to change at runtime.</h1>
+</div>
+
+<script>
+  vm = new Vue({
+    el: '#app',
+    data: {
+      ok: true,
+      type: 'D',
+      loginType: 'username'
+    },
+    methods: {
+      toggleLoginType: function () {
+        this.loginType === 'username' ? this.loginType = 'email' : this.loginType = 'username'
+      }
+    }
+  })
+</script>
+</body>
+</html>
