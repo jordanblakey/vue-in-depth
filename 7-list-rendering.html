@@ -1,0 +1,227 @@
+<!doctype html>
+<!--suppress ALL -->
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue: List Rendering</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <p>v-for item in items</p>
+  <li v-for="(item, index) in items">
+    {{ parentMessage }} - {{ index }} - {{ item.message }}
+  </li>
+
+  <p>v-for item of items</p>
+  <li v-for="(item, index) of items">
+    {{ parentMessage }} - {{ index }} - {{ item.message }}
+  </li>
+
+  <p>v-for value in object works for objects, too</p>
+  <ul id="v-for-object" class="demo">
+    <li v-for="value in object">
+      {{ value }}
+    </li>
+
+  </ul>
+  <p>Pass in the value, key, index.</p>
+  <ul id="v-for-object2" class="demo">
+    <li v-for="(value, key, index) in object">
+      Index: {{ index }}, {{ key }}: {{ value }}
+    </li>
+  </ul>
+
+  <div>
+    <h3>Mutation Methods</h3>
+    <div v-for="item in items" :key="item.id">
+      {{ item }}
+    </div>
+    <button v-on:click="pushItem">Push Item</button>
+    <button v-on:click="popItem">Pop Item</button>
+    <button v-on:click="shiftItem">Shift Item</button>
+    <button v-on:click="unshiftItem">Unshift Item</button>
+    <button v-on:click="spliceItem">Splice Item</button>
+    <button v-on:click="sortList">Sort List</button>
+    <button v-on:click="reverseList">Reverse List</button>
+    <button v-on:click="replaceArray">Replace Array</button>
+  </div>
+
+  <div>
+    <h3>Displaying Filtered/Sorted Results (computed)</h3>
+    <li v-for="n in evenNumbers">{{ n }}</li>
+  </div>
+  <div>
+    <h3>Displaying Filtered/Sorted Results (method)</h3>
+    <li v-for="n in even(numbers)">{{ n }}</li>
+  </div>
+  <div>
+    <h3>Using v-for with a range</h3>
+    <li v-for="n in 10">{{ n }}</li>
+  </div>
+
+  <div>
+    <template v-for="item in items">
+      <li>{{ item.message }}</li>
+      <hr>
+    </template>
+  </div>
+
+  <ul v-if="todos.length">
+    <li v-for="todo in todos" v-if="!todo.isComplete">
+      {{ todo }}
+    </li>
+  </ul>
+  <p v-else>No todos left!</p>
+</div>
+
+<div id="todo-list-example">
+  <form v-on:submit.prevent="addNewTodo">
+    <label for="new-todo">Add a todo</label>
+    <input
+      v-model="newTodoText"
+      id="new-todo"
+      placeholder="E.g. Feed the cat"
+    >
+    <button>Add</button>
+  </form>
+  <ul>
+    <li
+      is="todo-item"
+      v-for="(todo, index) in todos"
+      v-bind:key="todo.id"
+      v-bind:title="todo.title"
+      v-on:remove="todos.splice(index, 1)"
+    ></li>
+  </ul>
+</div>
+
+<script>
+  vm = new Vue({
+    el: '#app',
+    data: {
+      parentMessage: 'Parent Message',
+      itemKey: 004,
+      items: [
+        {message: 'Foo', id: '001'},
+        {message: 'Bar', id: '002'},
+        {message: 'Bar Foo', id: '003'}
+      ],
+      todos: [
+        {text: 'Something to do', isComplete: true},
+        {text: 'Another thing to do', isComplete: false},
+        {text: 'Another thing to do', isComplete: true},
+        {text: 'Another thing to do', isComplete: false},
+        {text: 'Another thing to do', isComplete: true},
+        {text: 'Another thing to do', isComplete: false},
+        {text: 'Another thing to do', isComplete: true}
+      ],
+      numbers: [1, 2, 3, 4, 5],
+      object: {
+        firstName: 'John',
+        lastName: 'Doe',
+        age: 30
+      }
+    },
+    computed: {
+      evenNumbers: function () {
+        return this.numbers.filter(function (number) {
+          return number % 2 === 0
+        })
+      }
+    },
+    methods: {
+      even: function (numbers) {
+        return numbers.filter(function (number) {
+          return number % 2 === 0
+        })
+      },
+      pushItem: function () {
+        this.items.push({message: Math.random().toString()})
+      },
+      popItem: function () {
+        this.items.pop()
+      },
+      shiftItem: function () {
+        this.items.shift()
+      },
+      unshiftItem: function () {
+        this.items.unshift({message: Math.random().toString()})
+      },
+      spliceItem: function () {
+        this.itemKey = parseInt(this.itemKey) + 1
+        this.itemKey = "0000000" + this.itemKey
+        this.itemKey = this.itemKey.substr(this.itemKey.length - 3, this.itemKey.length)
+        this.items.splice(1, 1, {message: 'Spliced Message', id: this.itemKey})
+      },
+      sortList: function () {
+        this.items.sort()
+      },
+      reverseList: function () {
+        this.items.reverse()
+      },
+      replaceArray: function () {
+        this.items = this.items.filter(function (item) {
+          return item.message.match(/Foo/)
+        })
+      }
+    }
+  })
+
+  Vue.set(vm.object, 'fave color', 'red')
+  console.log(vm.object)
+
+  vm.object = Object.assign({}, vm.object, {
+    pets: ['dog', 'fish'],
+    parents: 2
+  })
+  console.log(vm.object)
+
+  Vue.component('todo-item', {
+    template: '\
+    <li>\
+      {{ title }}\
+      <button v-on:click="$emit(\'remove\')">Remove</button>\
+    </li>\
+  ',
+    props: ['title']
+  })
+
+  new Vue({
+    el: '#todo-list-example',
+    data: {
+      newTodoText: '',
+      todos: [
+        {
+          id: 1,
+          title: 'Do the dishes',
+        },
+        {
+          id: 2,
+          title: 'Take out the trash',
+        },
+        {
+          id: 3,
+          title: 'Mow the lawn'
+        }
+      ],
+      nextTodoId: 4
+    },
+    methods: {
+      addNewTodo: function () {
+        this.todos.push({
+          id: this.nextTodoId++,
+          title: this.newTodoText
+        })
+        this.newTodoText = ''
+      }
+    }
+  })
+
+
+</script>
+</body>
+</html>

@@ -77,14 +77,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="9081" />
+          <entry key="html" value="12245" />
           <entry key="md" value="810" />
           <entry key="vue" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="9081" />
+          <entry key="HTML" value="12245" />
           <entry key="Markdown" value="810" />
           <entry key="Vue.js" value="20" />
         </counts>
@@ -92,7 +92,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="editorconfig" value="1" />
-          <entry key="html" value="10" />
+          <entry key="html" value="11" />
           <entry key="http" value="1" />
           <entry key="md" value="4" />
           <entry key="vue" value="2" />
@@ -100,7 +100,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="10" />
+          <entry key="HTML" value="11" />
           <entry key="Markdown" value="2" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Scratch" value="3" />
@@ -114,20 +114,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/6-conditional-rendering.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="63" column="16" lean-forward="true" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
+            <state relative-caret-position="158">
+              <caret line="19" column="24" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/5-class-style-bindings.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/7-list-rendering.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="8" column="70" lean-forward="true" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
+            <state relative-caret-position="176">
+              <caret line="81" column="41" selection-start-line="81" selection-start-column="41" selection-end-line="81" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -141,6 +141,7 @@
       <find>click</find>
       <find>input</find>
       <find>v-bind:style</find>
+      <find>random</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -167,6 +168,7 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/5-class-style-bindings.html" />
         <option value="$PROJECT_DIR$/6-conditional-rendering.html" />
+        <option value="$PROJECT_DIR$/7-list-rendering.html" />
       </list>
     </option>
   </component>
@@ -315,12 +317,12 @@
       <workItem from="1535246167548" duration="9141000" />
       <workItem from="1535263912081" duration="5746000" />
       <workItem from="1535318300628" duration="1344000" />
-      <workItem from="1535322952153" duration="2201000" />
+      <workItem from="1535322952153" duration="6397000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35431000" />
+    <option name="totallyTimeSpent" value="39627000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -473,15 +475,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/5-class-style-bindings.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="8" column="70" lean-forward="true" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
+        <state relative-caret-position="159">
+          <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/6-conditional-rendering.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="63" column="16" lean-forward="true" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
+        <state relative-caret-position="158">
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7-list-rendering.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="81" column="41" selection-start-line="81" selection-start-column="41" selection-end-line="81" selection-end-column="41" />
         </state>
       </provider>
     </entry>
