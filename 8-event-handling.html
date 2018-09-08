@@ -11,19 +11,75 @@
 </head>
 
 <body>
-  <div id="app">
-    <li v-for="(item, i) in items">
-      {{ parentMessapge }} - {{ index }} - {{ item.message }}
-    </li>
+  <div id="ex1">
+    <button v-on:click="counter += 1">Add 1</button>
+    <p>The button above has been clicked {{ counter }} times.</p>
   </div>
-
   <script>
-    vm = new Vue({
-      el: '#app',
-      data: {},
-      methods: {}
+    var ex1 = new Vue({
+      el: '#ex1',
+      data: {
+        counter: 0
+      }
     })
   </script>
+
+  <div id="ex2">
+    <button v-on:click="greet">Greet</button>
+  </div>
+  <script>
+    var ex2 = new Vue({
+      el: '#ex2',
+      data: {
+        name: 'Vue.js'
+      },
+      methods: {
+        greet: function (event) {
+          //`this` inside method points to the Vue instance
+          alert('Hello ' + this.name + '!')
+          // `event` is the native DOM event
+          if (event) {
+            alert(event.target.tagName)
+          }
+        }
+      }
+    })
+        // ex2.greet() // => 'Hello Vue.js!'
+  </script>
+
+  <div id="ex3">
+    <button v-on:click="say('hi')">Say hi.</button>
+    <button v-on:click="say('what')">Say what.</button>
+    <button v-on:click="warn('Form cannot be submitted yet.', $event)">Submit</button>
+    <button v-on:click.stop="doThis">stop</button>
+    <form v-on:submit.prevent="onSubmit">prevent</form>
+    <button v-on:click.stop.prevent="doThis">stop.prevent</button>
+    <form v-on:submit.prevent>prevent</form>
+    <div v-on:click.capture="doThis">capture</div>
+    <div v-on:click.self="doThat">self</div>
+    <button v-on:click.once="burnAfterReading">self</button>
+    <button v-on:keyup.13="submit">on keycode 13</button>
+    <input @keyup.enter="submit">
+    keyup.enter | keyup.tab | keyup.delete | keyup.esc | keyup.space | keyup.up | keyup.down | keyup.left | keyup.right
+    @keyup.page-down | @keyup.ctrl.left | @keyup.alt.up | @keyup.shift.enter | @keyup.meta.67
+    @click.left.ctrl
+
+  </div>
+  <script>
+    var ex3 = new Vue({
+      el: '#ex3',
+      methods: {
+        say: function (message) {
+          alert(message)
+        },
+        warn: function (message, event) {
+          if (event) event.preventDefault()
+          alert(message)
+        }
+      }
+    })
+  </script>
+
 
 </body>
 
