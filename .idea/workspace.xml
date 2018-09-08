@@ -67,7 +67,7 @@
     <session id="1700046214">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="1" />
@@ -126,8 +126,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/7-list-rendering.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="81" column="41" selection-start-line="81" selection-start-column="41" selection-end-line="81" selection-end-column="41" />
+            <state relative-caret-position="142">
+              <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
             </state>
           </provider>
         </entry>
@@ -271,7 +271,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="wrap&#9;ACTION&#9;EditorGutterToggleGlobalSoftWraps&#10;close pro&#9;ACTION&#9;CloseProject&#10;surround&#9;ACTION&#9;SurroundWithEmmet&#10;file&#9;ACTION&#9;FileMenu&#10;new&#9;ACTION&#9;WeighingNewGroup&#10;open br&#9;ACTION&#9;OpenInBrowser&#10;open brow&#9;ACTION&#9;OpenInBrowserGroup&#10;rename &#9;ACTION&#9;RenameFile&#10;new line&#9;ACTION&#9;EditorStartNewLine&#10;rename&#9;ACTION&#9;RenameFile&#10;term&#9;ACTION&#9;ActivateTerminalToolWindow&#10;struc&#9;ACTION&#9;ActivateStructureToolWindow&#10;stru&#9;ACTION&#9;ActivateStructureToolWindow&#10;event&#9;ACTION&#9;ActivateEventLogToolWindow&#10;all occ&#9;ACTION&#9;SelectAllOccurrences&#10;to tabs&#9;ACTION&#9;ConvertIndentsToTabs&#10;fold&#9;ACTION&#9;FoldingGroup&#10;open&#9;ACTION&#9;OpenFile&#10;bookmar&#9;ACTION&#9;EditBookmarksGroup&#10;bookmark&#9;ACTION&#9;GotoBookmark0&#10;close&#9;ACTION&#9;CloseAllUnpinnedEditors&#10;head&#9;null&#9;null&#10;head'&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="close pro&#9;ACTION&#9;CloseProject&#10;wrap&#9;ACTION&#9;EditorGutterToggleGlobalSoftWraps&#10;surround&#9;ACTION&#9;SurroundWithEmmet&#10;file&#9;ACTION&#9;FileMenu&#10;new&#9;ACTION&#9;WeighingNewGroup&#10;open br&#9;ACTION&#9;OpenInBrowser&#10;open brow&#9;ACTION&#9;OpenInBrowserGroup&#10;rename &#9;ACTION&#9;RenameFile&#10;new line&#9;ACTION&#9;EditorStartNewLine&#10;rename&#9;ACTION&#9;RenameFile&#10;term&#9;ACTION&#9;ActivateTerminalToolWindow&#10;struc&#9;ACTION&#9;ActivateStructureToolWindow&#10;stru&#9;ACTION&#9;ActivateStructureToolWindow&#10;event&#9;ACTION&#9;ActivateEventLogToolWindow&#10;all occ&#9;ACTION&#9;SelectAllOccurrences&#10;to tabs&#9;ACTION&#9;ConvertIndentsToTabs&#10;fold&#9;ACTION&#9;FoldingGroup&#10;open&#9;ACTION&#9;OpenFile&#10;bookmar&#9;ACTION&#9;EditBookmarksGroup&#10;bookmark&#9;ACTION&#9;GotoBookmark0&#10;close&#9;ACTION&#9;CloseAllUnpinnedEditors&#10;head&#9;null&#9;null&#10;head'&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Markdown" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -317,12 +317,12 @@
       <workItem from="1535246167548" duration="9141000" />
       <workItem from="1535263912081" duration="5746000" />
       <workItem from="1535318300628" duration="1344000" />
-      <workItem from="1535322952153" duration="6397000" />
+      <workItem from="1535322952153" duration="6649000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39627000" />
+    <option name="totallyTimeSpent" value="39879000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -335,9 +335,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="960" height="877" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49544865" visible="true" weight="0.14483494" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49544865" visible="true" weight="0.14483494" />
       <window_info id="Structure" order="1" sideWeight="0.50455135" side_tool="true" weight="0.19168429" />
       <window_info id="Favorites" order="2" sideWeight="0.50541514" side_tool="true" weight="0.19168429" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -350,7 +349,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3197452" />
       <window_info anchor="bottom" id="REST Client" order="9" weight="0.38471338" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.7230444" visible="true" weight="0.30063695" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.7230444" visible="true" weight="0.30063695" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.2769556" side_tool="true" weight="0.24187256" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -489,8 +488,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/7-list-rendering.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="81" column="41" selection-start-line="81" selection-start-column="41" selection-end-line="81" selection-end-column="41" />
+        <state relative-caret-position="142">
+          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
         </state>
       </provider>
     </entry>
