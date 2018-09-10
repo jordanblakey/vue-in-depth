@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue: Event Handling</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <h1>Form Input Bindings</h1>
+    <h3>Text Input</h3>
+    <input v-model.trim="message" placeholder="edit me">
+    <p>Message is: {{ message }}</p>
+
+    <h3>Text Area</h3>
+    <span>Multiline message is:</span>
+    <p style="white-space: pre-line;">{{ message }}</p>
+    <br>
+    <textarea v-model="messagearea" placeholder="add multiple lines"></textarea>
+
+    <h3>Checkbox</h3>
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+
+    <h3>Checkboxes</h3>
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames }}</span>
+
+    <h3>Radio</h3>
+    <input type="radio" id="one" value="One" v-model="picked">
+    <label for="one">One</label>
+    <br>
+    <input type="radio" id="two" value="Two" v-model="picked">
+    <label for="two">Two</label>
+    <br>
+    <span>Picked: {{ picked }}</span>
+
+    <h3>Select</h3>
+    <p>single select:</p>
+    <select v-model="selected">
+      <option disabled value="">Please select one</option>
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+
+    <p>multi select</p>
+    <select multiple v-model="selected2">
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+    <br>
+    <span>Selected: {{ selected2 }}</span>
+
+    <p>Dynamic options using v-for</p>
+    <select v-model="selected3">
+      <option v-for="option in options" v-bind:value="option.value">
+        {{ option.text }}
+      </option>
+    </select>
+    <span>Selected: {{ selected3 }}</span>
+
+    <h3>Checkbox</h3>
+    <input type="checkbox" v-model="toggle" true-value="yes" false-value="no">
+    <span>{{toggle}}</span>
+
+    <input type="radio" v-model="pick" v-bind:value="a">
+
+    <select v-model.lazy="selected4">
+      <option v-bind:value="{ number: 123 }">123</option>
+    </select>
+    <span>{{ selected4 }}</span>
+
+    <input type="number" v-model.number="age">
+    <span>{{age}}</span>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        message: '',
+        messagearea: '',
+        checked: false,
+        checkedNames: [],
+        picked: false,
+        selected: '',
+        selected2: [],
+        selected3: [],
+        selected4: [],
+        options: [
+          { text: 'One', value: 'A' },
+          { text: 'Two', value: 'B' },
+          { text: 'Three', value: 'C' }
+        ],
+        toggle: null,
+        a: null,
+        pick: null,
+        age: null,
+      }
+    })
+
+  </script>
+
+
+</body>
+
+</html>
