@@ -14,7 +14,7 @@ vue build App.vue -t <targ> -n <name> -d <dest>
 # Bootstrap a project
 # vue create app-name # Default webpack config
 vue init pwa pwa-test # PWA optimized build template
-cd app-name; 
+cd app-name;
 # yarn start # Default template
 yarn run dev # PWA template
 yarn run build
@@ -22,4 +22,5 @@ cd dist; python -m SimpleHTTPServer # Serve the dist folder on localhost:8000
 yarn run lint
 
 Note: defaults saved in ~/.vuerc
+
 ```
