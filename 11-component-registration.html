@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Component Basics</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <component-a></component-a>
+    <component-b></component-b>
+    <component-c></component-c>
+  </div>
+
+  <script>
+    // Global Registration
+    // Vue.component('component-1', { })
+    // Vue.component('component-1', { })
+    // Vue.component('component-1', { })
+
+    // Local Registration
+    let ComponentA = {
+      components: {
+        'component-a': ComponentA // locally registered components are not available in subcomponents.
+      }
+    }
+    let ComponentB = {}
+    let ComponentC = {}
+
+    /* Local registration using ES2015 import syntax
+    //In ComponentB.vue
+    import ComponentA from './ComponentA'
+    import ComponentC from './ComponentC'
+    */
+
+    new Vue({
+      el: '#app',
+      components: { // Only necessary for local registration.
+        'component-a': ComponentA,
+        'component-b': ComponentB,
+        'component-c': ComponentC
+      }
+    })
+  </script>
+
+</body>
+
+</html>
