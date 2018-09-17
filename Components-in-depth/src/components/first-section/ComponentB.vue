@@ -33,13 +33,17 @@
 <script>
 import ComponentA from './ComponentA';
 import ComponentC from './ComponentC';
-import { Person } from '../types';
+import BlogPost from './BlogPost';
+
+// Import type definitions for custom prop validation
+import { Person } from '../../types';
 
 export default {
   name: 'ComponentB',
   components: {
     ComponentA,
-    ComponentC
+    ComponentC,
+    BlogPost
   },
   // props: ['postTitle'], // Props as an array of strings
   // Use an object for type safety on props

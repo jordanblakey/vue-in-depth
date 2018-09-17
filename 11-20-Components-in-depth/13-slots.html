@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Slots</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="slot-demo">
+  </div>
+
+  <script>
+    Vue.component('navigation-link', {
+      data: function () {
+        return {
+          url: ''
+        }
+      },
+      template: `
+        <a v-bind:href="url" class="nav-link">
+          <slot></slot>
+        </a>
+      `
+    })
+
+    Vue.component('content1', {
+      data: function () {
+        return {
+          childData: 'Child Data'
+        }
+      },
+      template: `
+        <div class="container">
+          <header>
+            <slot name="header">Default Header Slot Content</slot>
+          </header>
+          <main>
+            <slot>Default Main Slot Content: {{ childData }}</slot>
+          </main>
+          <footer>
+            <slot name="footer">Default Footer Slot Content</slot>
+          </footer>
+        </div>
+      `
+    })
+
+    // Vue.component('TodoList', {
+    //   data: function () {
+    //     return {
+    //       todos: [
+    //         { id: 1, isComplete: true, title: "Title 1" },
+    //         { id: 2, isComplete: true, title: "Title 2" },
+    //         { id: 3, isComplete: true, title: "Title 3" }
+    //       ]
+    //     }
+    //   },
+    //   template: '<div><li v-for="todo in todos"><slot>{{todo.title}}</slot></li></div>'
+
+    // })
+
+    new Vue({
+      el: '#slot-demo',
+      data: function () {
+        return {
+          dataTest: 'Test Data',
+          todos: [
+            { id: 1, isComplete: true, title: "Title 1" },
+            { id: 2, isComplete: true, title: "Title 2" },
+            { id: 3, isComplete: true, title: "Title 3" }
+          ]
+        }
+      },
+      template: `
+        <div>
+          <navigation-link url="/profile">
+            <span class="fa fa-user"></span>
+            <!--<font-awesome-icon name="user"></font-awesome-icon>-->
+            Your Profile
+          </navigation-link>
+          <content1>
+            <template slot="header">
+              <p>Header Content</p>
+            </template>
+            <p>Main Content</p>
+            <template slot="footer">
+              <p>Footer Content</p>
+            </template>
+          </content1>
+          <content1>
+            <h1 slot="header"> Header Content </h1>
+            <p>{{dataTest}}</p>
+            <p slot="footer"> Footer Content </p>
+          </content1>
+          <content1></content1>
+
+          <!--<todo-list v-bind:todos="todos">
+            <template slot-scope="slotProps">
+            <span v-if="slotProps.todo.isComplete">✓</span>
+              {{ slotProps.todo.text }}
+            </template>
+          </todo-list>-->
+        </div>
+      `
+    })
+
+  </script>
+</body>
+
+</html>
