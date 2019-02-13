@@ -3,6 +3,8 @@ import Router from 'vue-router';
 import Overview from './views/Overview';
 
 Vue.use(Router);
+const base = './views/'
+let component = base + 'TransitioningSingleElementsComponents.vue'
 
 export default new Router({
   routes: [
@@ -15,7 +17,7 @@ export default new Router({
       path: '/transitioning-single-elements-components',
       name: 'transitioning-single-elements-components',
       component: () =>
-        import('./views/TransitioningSingleElementsComponents.vue')
+        import('./views/TransitioningSingleElementsComponents')
     },
     {
       path: '/initial-render',
