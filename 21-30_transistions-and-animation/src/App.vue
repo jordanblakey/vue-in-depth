@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <!-- <HelloWorld></HelloWorld> -->
+    <DynamicComponents></DynamicComponents>
     <div id="nav">
       <router-link to="/">Overview</router-link>&nbsp;|&nbsp;
       <router-link
@@ -15,6 +17,16 @@
     <router-view/>
   </div>
 </template>
+
+<script>
+import DynamicComponents from './components/DynamicComponents'
+export default {
+    components: {
+        DynamicComponents
+    }
+}
+</script>
+
 
 <style>
 #app {

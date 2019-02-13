@@ -1,22 +1,24 @@
 <template>
   <div>
-    <FormOne></FormOne>
-    <FormTwo></FormTwo>
+    <!-- <FormOne></FormOne>
+    <FormTwo></FormTwo> -->
+    <h1>Test</h1>
   </div>
 </template>
 
 <script>
-import FormOne from './formOne'
-import FormTwo from './formTwo'
+// import FormOne from './formOne'
+// import FormTwo from './formTwo'
 
 export default {
     name: 'HelloWorld',
     components: {
-        FormOne,
-        FormTwo
+        // FormOne,
+        // FormTwo
     },
-    props: {
-        msg: String
+    props: {},
+    data() {
+        return {}
     }
 }
 </script>
