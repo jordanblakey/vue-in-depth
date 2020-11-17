@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List Rendering</title>
+  <style>
+    .divider {
+      border-bottom: 1px solid #ccc;
+      list-style: none;
+    }
+  </style>
+</head>
+<body>
+  <ul id="array-rendering">
+    <li v-for="(item, index) of items" :key="item.id">
+      {{ parentMessage }} - {{ index }} - {{ item.message }}
+    </li>
+    <li v-for="number in evenNumbers">{{ number }}</li>
+    <li v-for="n in odd(numbers)">{{ n }}</li>
+    <li v-for="nums in sets">
+      <span v-for="num in odd(nums)">{{ num + ' '}}</span>
+    </li>
+    <li><span v-for="n in 100">{{ n + ' ' }}</span></li>
+  </ul>
+
+  <ul id="v-for-object" class="demo">
+    <li v-for="(value, name, index) in myObject">
+      {{ index }}. {{ name }}: {{ value }}
+    </li>
+  </ul>
+
+  <ul id="template-loop">
+    <template v-for="item in items">
+      <li>{{ item.message }}</li>
+      <li class="divider" role="presentation">
+    </template>
+  </ul>
+
+  <ul id="todo-list">
+    <template v-for="todo in todos">
+      <li v-if="!todo.isComplete">{{ todo }}</li>
+    </template>
+  </ul>
+
+  <div id="todo-list-with-components">
+    <form v-on:submit.prevent="addNewTodo">
+      <label for="new-todo">Add a todo</label>
+      <input type="text" v-model="newTodoText" id="new-todo" placeholder="E.g. feed the cats" />
+      <button>Add</button>
+    </form>
+    <ul>
+      <todo-item v-for="(todo, index) in todos" :key="todo.id" :title="todo.title" @remove="todos.splice(index, 1)"></todo-item>
+    </ul>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const arrayRendering = Vue.createApp({
+      data() {
+        return {
+          parentMessage: 'Parent',
+          items: [
+            { message: 'Foo', id: 1 },
+            { message: 'Bar', id: 2 }
+          ],
+          numbers: [1,2,3,4,5,6,7],
+          sets: [[10,11,12,13,14,15], [16,17,18,19,20]]
+        }
+      },
+      methods: {
+        odd(nums) {
+          return nums.filter(n => n % 2 !== 0)
+        }
+      },
+      computed: {
+        evenNumbers() {
+          return this.numbers.filter(number => number % 2 === 0)
+        }
+      }
+    })
+    const vm1 = arrayRendering.mount('#array-rendering')
+
+    vm1.items.push({ message: 'Baz', id: 3 })
+    vm1.items.pop()
+    vm1.items = vm1.items.filter(item => item.message.match(/\w{3}/))
+  </script>
+  <script>
+    const vForObject = Vue.createApp({
+      data() {
+        return {
+          myObject: {
+            title: 'How to do lists in Vue',
+            author: 'Jane Doe',
+            publishedAt: '2016-04-10'
+          }
+        }
+      }
+    })
+    const vm2 = vForObject.mount('#v-for-object')
+
+  </script>
+  <script>
+    const templateLoop = Vue.createApp({
+      data() {
+        return {
+          items: [
+            { message: 'Message 1' },
+            { message: 'Message 2' },
+            { message: 'Message 3' },
+            { message: 'Message 4' }
+          ]
+        }
+      }
+    }).mount('#template-loop')
+  </script>
+  <script>
+    const todoList = Vue.createApp({
+      data() {
+        return {
+          todos: [
+            { name: 'Get groceries', isComplete: true },
+            { name: 'Get gas', isComplete: false },
+            { name: 'Get phone', isComplete: true },
+            { name: 'Get car', isComplete: false },
+          ]
+        }
+      }
+    }).mount('#todo-list')
+  </script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          newTodoText: '',
+          todos: [
+            { id: 1, title: 'Do the dishes' },
+            { id: 2, title: 'Take out the trash' },
+            { id: 3, title: 'Mow the lawn' }
+          ],
+          nextTodoId: 4
+        }
+      },
+      methods: {
+        addNewTodo() {
+          this.todos.push({
+            id: this.nextTodoId++,
+            title: this.newTodoText
+          })
+          this.newTodoText = ''
+        }
+      }
+    })
+
+    app.component('todo-item', {
+      template: `
+        <li>{{ title }} <button @click="$emit('remove')">[X]</button></li>
+      `,
+      props: ['title']
+    })
+
+    app.mount('#todo-list-with-components')
+  </script>
+</body>
+</html>

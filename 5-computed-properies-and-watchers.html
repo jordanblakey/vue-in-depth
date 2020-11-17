@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computed Properties and Watchers</title>
+</head>
+<body>
+  <div id="example1">
+    <h1>{{ $data.author.name }}</h1>
+    <p>Has published books: <span>{{ author.books.length > 0 ? 'Yes' : 'No' }}</span></p>
+    <ol v-if="$data.author.books.length > 0">
+      <li v-for="book in author.books">{{ book }}</li>
+    </ol>
+  </div>
+
+  <div id="example2">
+    <h1>{{ author.name }}</h1>
+    <p>Has published books: <span>{{ publishedBooksMessage + calculateBooksMessage() }}</span></p>
+    <ol>
+      <li v-for="book in author.books">{{ book }}</li>
+    </ol>
+    <button @click="publishBook">Publish New Book</button>
+
+    <p>The time is {{ now }}</p>
+    <p>The author's name is {{ this.fullName }}.</p>
+    <button @click="changeName">Reveal Pen Name</button>
+  </div>
+
+  <div id="watcher-example">
+    <p>Ask a yes/no question:</p>
+    <input type="text" v-model="question">
+    <p>{{ answer }}</p>
+  </div>
+
+  <div id="watcher-example2">
+    Getting full name via watch: {{ fullName }}
+  </div>
+
+  <div id="watcher-example3">
+    Getting full name via computed properties: {{ fullName }}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          author: {
+            name: 'John Doe',
+            books: [
+              'Vue 2 - Advanced Guide',
+              'Vue 3 - Basic Guide',
+              'Vue 4 - The Mystery'
+            ]
+          }
+        }
+      }
+    }).mount('#example1')
+
+    const example2 = Vue.createApp({
+      data() {
+        return {
+          author: {
+            name: 'Jane Doe',
+            books: [
+              'Awesome Book',
+              'Mysterious Tome',
+              'Melancholy Missive'
+            ]
+          },
+          firstName: 'Shawn',
+          lastName: 'Sheep'
+        }
+      },
+      computed: {
+        publishedBooksMessage() {
+          return this.author.books.length > 0 ? 'Yes': 'No'
+        },
+        now() {
+          return moment().format('LLLL')
+        },
+        fullName: {
+          get() {
+            return this.firstName + ' ' + this.lastName
+          },
+          set(newValue) {
+            const names = newValue.split(' ')
+            this.firstName = names[0]
+            this.lastName = names[names.length - 1]
+          }
+        }
+      },
+      methods: {
+        calculateBooksMessage() {
+          return this.author.books.length > 0 ? 'Yes': 'No'
+        },
+        publishBook() {
+          let adjs = ['Tempting', 'Strenuous', 'Dull']
+          let nouns = ['Essay', 'Paper', 'Novella']
+          function getRandom(arr) {
+            return arr[Math.floor(Math.random() * arr.length)]
+          }
+          this.author.books.push(getRandom(adjs) + ' ' + getRandom(nouns))
+        },
+        changeName() {
+          this.fullName = this.author.name
+        }
+      }
+    })
+    vm = example2.mount('#example2')
+
+
+    const watchExampleVM = Vue.createApp({
+      data() {
+        return {
+          question: '',
+          answer: 'Questions usually contain a question mark. :)'
+        }
+      },
+      watch: {
+        question(newQuestion, oldQuestion) {
+          if (newQuestion.indexOf('?') > -1) {
+            this.getAnswer()
+          }
+        }
+      },
+      methods: {
+        getAnswer() {
+          this.answer = 'Thinking...'
+          axios.get('https://yesno.wtf/api')
+            .then(res => {this.answer = res.data.answer})
+            .catch(e => {this.answer = 'Error! Could not reach API. ' + e})
+        }
+      }
+    }).mount('#watcher-example')
+
+    const vm2 = Vue.createApp({
+      data() {
+        return {
+          firstName: 'Foo',
+          lastName: 'Bar',
+          fullName: 'Foo Bar'
+        }
+      },
+      watch: {
+        firstName(val) {
+          this.fullName = val + ' ' + this.lastName
+        },
+        lastName(val) {
+          this.fullName = this.firstName + ' ' + val
+        }
+      }
+    }).mount('#watcher-example2')
+
+    const vm3 = Vue.createApp({
+      data() {
+        return {
+          firstName: 'Foo',
+          lastName: 'Bar'
+        }
+      },
+      computed: {
+        fullName() {
+          return this.firstName + ' ' + this.lastName
+        }
+      }
+    }).mount('#watcher-example3')
+  </script>
+</body>
+</html>

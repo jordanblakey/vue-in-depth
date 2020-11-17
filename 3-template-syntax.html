@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Syntax</title>
+</head>
+<body>
+  <div id="example1">
+    <p>Message: {{ msg }}</p>
+    <p v-once>This will never change (v-once directive): {{ msg }}</p>
+    <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+
+    <button v-bind:id="'list-item-' + dynamicId" v-bind:disabled="isButtonDisabled">{{ isButtonDisabled ? 'DISABLED' : 'NOT DISABLED'}}</button>
+    <p v-if="seen">Now you see me.</p>
+    <p>
+      <a v-bind:href="boundUrl">{{ 'Link to ' + boundUrl }}</a><br>
+      <a v-bind:[attrname]="boundUrl">{{ attributeName + ' attribute bound to ' + boundUrl + '.'}}</a>
+    </p>
+    <button v-on:click="clickHandler">Click Me! Clicked {{ clickCount }} times.</button>
+    <button v-on:[eventname]="focusHandler">Focus Me! Focused {{ focusCount }} times.</button>
+    <form v-on:submit.prevent="onSubmit">
+      <input type="text" placeholder="John">
+      <input type="submit" value="Submit">
+    </form>
+    <p>
+      <a :href="boundUrl">Link to {{ boundUrl }}</a>
+      <button @click="clickHandler">Clicked {{ clickCount }} times.</button>
+    </p>
+  </div>
+
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const RenderHtmlApp = {
+      data() {
+        return {
+          msg: 'This is the msg.',
+          rawHtml: '<span style="color: red">This is raw HTML and should be red.</span>',
+          dynamicId: 11,
+          isButtonDisabled: true,
+          seen: true,
+          boundUrl: 'https://google.com',
+          clickCount: 0,
+          focusCount: 0,
+          attrname: 'href',
+          eventname: 'focus'
+        }
+      },
+      methods: {
+        clickHandler() {
+          this.clickCount++
+        },
+        focusHandler() {
+          this.focusCount++
+        },
+        onSubmit() {
+          alert('Form submitted')
+        }
+      }
+    }
+    Vue.createApp(RenderHtmlApp).mount('#example1')
+  </script>
+</body>
+</html>

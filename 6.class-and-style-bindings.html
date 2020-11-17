@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class and Style Bindings</title>
+  <style>
+    .alert {
+      font: normal normal normal 1rem/1.4 arial, sans-serif;
+      text-align:center;
+      width: 30%;
+      margin: 2rem auto;
+      background: #efefef;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: 3px;
+    }
+    .active {
+      background-color: #ffcc33;
+      border-color: #ddbb22;
+    }
+    .text-danger {
+      color: red;
+      font-weight: bold;
+      border-color: blue;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="alert" :class="classObject">If is red, active class applied.</div>
+    <div class="alert" :class="[activeClass, errorClass]">Classes passed as array.</div>
+    <div class="alert" :class="[!isActive ? activeClass : '', errorClass]">Classes passed as array.</div>
+    <div class="alert" :class="[{ active: isActive }, errorClass]">Testing mixed class syntax (object and array)</div>
+    <my-component :class="{ alert: true, active: isActive }"></my-component>
+    <div :style="{ color: activeColor, fontSize: fontSize + 'px' }">Inline style without style object</div>
+    <div :style="styleObject">Inline styles with style object.</div>
+    <div :style="[styleObject, overridingStyles]">Testing with multiple style objects</div>
+    <div :style="{ transform: 'rotate(.5turn)' }">Upside down, vendor-prefixed inline style.</div>
+    <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }">Test multiple unsupported properties</div>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    let vm = Vue.createApp({
+      data() {
+        return {
+          isActive: true,
+          error: {
+            type: 'warn'
+          },
+          activeClass: 'active',
+          errorClass: 'text-danger',
+          activeColor: 'green',
+          fontSize: 30,
+          styleObject: {
+            color: 'purple',
+            fontSize: '50px'
+          },
+          overridingStyles: {
+            background: '#ff0'
+          }
+        }
+      },
+      computed: {
+        classObject() {
+          return {
+            active: this.isActive && this.error.type !== 'fatal',
+            'text-danger': this.error && this.error.type ==='fatal'
+          }
+        }
+      }
+    })
+    vm.component('my-component', {
+      template: `<p class="foo bar">I'm a component</p>`
+    })
+    vm.mount('#app')
+
+  </script>
+</body>
+</html>

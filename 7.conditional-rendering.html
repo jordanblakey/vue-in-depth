@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditional Rendering</title>
+</head>
+<body>
+  <div id="app">
+    <h1 v-if="awesome">Vue is awesome!</h1>
+    <h1 v-else>Oh no! 😢 Vue is not awesome (or so you say)...</h1>
+
+    <div v-if="type === 'A'">A</div>
+    <div v-else-if="type === 'B'">A</div>
+    <div v-else-if="type === 'C'">A</div>
+    <div v-else>Type is not one of A, B, or C.</div>
+
+    <div v-show="show">I'm display block if v-if === true, else display: none.</div>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    app = Vue.createApp({
+      data() {
+        return {
+          awesome: true,
+          type: 'D',
+          show: true
+        }
+      }
+    })
+    app.mount('#app');
+  </script>
+</body>
+</html>

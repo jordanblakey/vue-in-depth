@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application and Component Instances</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    // VERBOSE APP CREATION
+    // const verboseApp = Vue.createApp({ /* options */ })
+    // verboseApp.component('SearchInput', SearchInputComponent)
+    // verboseApp.directive('focus', FocusDirective)
+    // verboseApp.use(LocalePlugin)
+
+    // APP CREATION USING CHAINING
+    // const chainedApp = Vue.createApp({})
+    //   .component('SearchInput', SearchInputComponent)
+    //   .directive('focus', FocusDirective)
+    //   .use(LocalePlugin)
+
+    // ROOT COMPONENT EXAMPLE
+    const RootComponent = {
+      data() {
+        return { count: 4 }
+      },
+      // LIFECYCLE METHODS
+      beforeCreate() {},
+      // Compile template into render function
+      created() {
+        // 'this' points to the viewModel instance mounted at DOM node '#app'
+        console.log('count is: ' + this.count)
+      },
+      beforeMount() {},
+      // Render template at DOM node '#app'
+      mounted() {
+        console.log('Vue instance mounted:', this)
+      },
+      beforeUpdate() {},
+      updated() {
+        console.log('Vue instance updated:', this)
+      },
+      beforeUnmount() {},
+      unmounted() {
+        console.log('Vue instance unmounted:', this)
+      }
+      // INSTANCE PROPERTIES
+      // methods: {
+      //   methodExample() {
+      //     console.log('methodExample called')
+      //   }
+      // },
+      // props: {},
+      // computed: {},
+      // inject: {},
+      // setup: {}
+    }
+    const app = Vue.createApp(RootComponent)
+    const vm = app.mount('#app') // 'vm' stands for ViewModel from MVVM pattern
+    console.log(vm.count, vm.$el) // => 4
+  </script>
+
+  <script>
+    // COMPONENT TREE EXAMPLE //////////////////////////////////////////////////
+    //
+    //  Root Component
+    //  └─TodoList
+    //    ├─TodoItem
+    //    │ ├─DeleteTodoButton
+    //    | └─EditTodoButton
+    //    └─TodoListFooter
+    //      ├─ClearTodosButton
+    //      └─TodoListStatistics
+  </script>
+</body>
+</html>

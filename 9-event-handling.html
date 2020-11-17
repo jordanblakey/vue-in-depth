@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Handling</title>
+  <style>
+    .scrollable {
+      height: 1em;
+      overflow-y: scroll;
+      display:block;
+    }
+  </style>
+</head>
+<body>
+  <div id="basic-event">
+    <button v-on:click="counter += 1">Add 1</button>
+    <p>The button above has been clicked {{ counter }} times.</p>
+  </div>
+
+  <div id="event-with-method">
+    <button @click="greet" title="test">Greet</button>
+  </div>
+
+  <div id="inline-handler">
+    <button @click="say('Hi!')">Say Hi.</buttton>
+    <button @click="say('What is updog?!')">Is that updog I smell?</buttton>
+    <button @click="warn('Form cannot be submitted yet.', $event)">Submit</button>
+    <button @click="one($event), two($event)">Fire multiple handlers</button>
+    <button @click="one">Fire multiple handlers</button>
+  </div>
+
+  <div id="event-modifiers">
+    <!-- Click event propogation will be stopped -->
+    <button @click.stop="doThis">Click Me</button>
+    <!-- Submit will not reload the page -->
+    <form @submit.prevent="onSubmit">I'm a form.</form>
+    <!-- Just the modifier -->
+    <form v-on:click.prevent>I'm also a form.</form>
+    <!-- Chaining event modifiers -->
+    <a href="https://google.com" @click.stop.prevent="doThat">I'm not a link</a>
+    <!-- Capture when event detected on inner element -->
+    <div @click.capture="doThis">
+      <a @click.prevent href="google.com">Google.com</a>
+    </div>
+    <div @click.self="doThat">
+      I'm a div.
+      <a href="google.com">I'm a link.</a>
+    </div>
+    <button @click.once="ephemeralAlert">You can only click me once.</button>
+    <div class="scrollable" @scroll.passive="onScroll">They see me scrolling...<br>They hatin...</div>
+    <p>The below buttons only register events when the correct key is pressed (keyup)</p>
+    <button @keyup.enter="alertKeyup">Enter</button>
+    <button @keyup.tab="alertKeyup">Tab</button>
+    <button @keyup.delete="alertKeyup">Delete</button>
+    <button @keyup.esc="alertKeyup">Esc</button>
+    <button @keyup.space="alertKeyup">Space</button>
+    <button @keyup.up="alertKeyup">Up</button>
+    <button @keyup.down="alertKeyup">Down</button>
+    <button @keyup.left="alertKeyup">Left</button>
+    <button @keyup.right="alertKeyup">Right</button>
+    <p>These buttons are only clickable when the correct modifier key is pressed.</p>
+    <button @click.ctrl="alertKeyup">Ctrl</button>
+    <button @click.alt="alertKeyup">Alt</button>
+    <button @click.shift="alertKeyup">Shift</button>
+    <button @click.shift.exact="alertKeyup">Shift Exact</button>
+    <button @click.meta="alertKeyup">Meta</button>
+    <p>This buttons are only clickable with the correct mouse button.</p>
+    <button @click.left=alertKeyup>Left Click</button>
+    <button @click.middle=alertKeyup>Middle Click</button>
+    <button @click.right=alertKeyup>Right Click</button>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          counter: 0
+        }
+      }
+    }).mount('#basic-event')
+
+    Vue.createApp({
+      data() {
+        return {
+          name: 'Vue.js'
+        }
+      },
+      methods: {
+        greet(event) {
+          alert('Hello' + this.name + '!')
+          if (event) {
+            alert(event.target.tagName)
+            // alert(event.target.title)
+          }
+        }
+      }
+    }).mount('#event-with-method')
+
+    Vue.createApp({
+      data() {
+        return {
+
+        }
+      },
+      methods: {
+        say(msg) {
+          alert(msg)
+        },
+        warn(msg, e) {
+          if (e) {
+            e.preventDefault()
+            console.log(e)
+          }
+          alert(msg)
+        },
+        one(e) {
+          console.log('First event:', e)
+        },
+        two(e) {
+          console.log('Second event:', e)
+        }
+      }
+    }).mount('#inline-handler')
+  </script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {}
+      },
+      methods: {
+        doThat() {
+          alert('Using event handler instead of default link behavior.')
+        },
+        doThis() {
+          alert('Captured event')
+        },
+        ephemeralAlert() {
+          alert('You\'ll only see me once!')
+        },
+        onScroll() {
+          setTimeout(function() {
+            console.log('Delayed Scroll event')
+          }, 1000)
+        },
+        alertKeyup(e) {
+          console.log(e)
+        }
+      }
+    }).mount('#event-modifiers')
+  </script>
+</body>
+</html>

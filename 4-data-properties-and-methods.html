@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Properties and Methods</title>
+</head>
+<body>
+  <div id="app">
+    <button @click="increment">clicked {{count}} times.</button>
+  </div>
+
+  <!-- <script src="https://unpkg.com/lodash@4.17.20/lodash.min.js"></script> -->
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          count: 4
+        }
+      },
+      methods: {
+        increment() {
+          // 'this' will refer to the component instance
+          this.count++
+        }
+      },
+      created() {
+        // this.debouncedClick = _.debounce(this.increment, 500)
+      }
+    })
+    const vm = app.mount('#app')
+
+    console.log(vm.$data, vm.$data.count, vm.count)
+
+    vm.count = 6
+    console.log(vm.$data, vm.$data.count, vm.count)
+
+    vm.increment()
+    console.log(vm.$data, vm.$data.count, vm.count)
+
+    console.log(vm.$attrs)
+  </script>
+</body>
+</html>
