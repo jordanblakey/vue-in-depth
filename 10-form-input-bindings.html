@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Input Bindings</title>
+</head>
+<body>
+  <div id="app">
+    <input v-model="message" placeholder="edit me" />
+    <p>Message is: {{ message }}</p>
+  </div>
+
+  <div id="app2">
+    <span>Multiline message is:</span>
+    <p style="white-space: pre-line;">{{ message }}</p>
+    <br />
+    <textarea v-model="message" placeholder="add multiple lines"></textarea>
+  </div>
+
+  <div id="app3">
+    <input type="checkbox" id="checkbox" v-model="checked" />
+    <label for="checkbox">{{ checked }}</label>
+  </div>
+
+  <div id="app4">
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames" />
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames" />
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames" />
+    <label for="mike">Mike</label>
+  </div>
+
+  <div id="app5">
+    <input type="radio" id="one" value="One" v-model="picked" />
+    <label for="one">One</label>
+    <br>
+    <input type="radio" id="two" value="Two" v-model="picked" />
+    <label for="two">Two</label>
+    <br>
+    <span>Picked: {{ picked }}</span>
+  </div>
+
+  <div id="app6">
+    <select v-model="selected">
+      <option disabled value="">Please select one</option>
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+  </div>
+
+  <div id="app7">
+    <select v-model="selected">
+      <option v-for="option in options" :value="option.value">
+        {{ option.text }}
+      </option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+  </div>
+
+  <div id="app8">
+    <!-- MODIFIERS -->
+    <!-- Synced after "change" event instead of "input" event -->
+    <input v-model.lazy="msg" /><br>
+    <!-- Automatic type casting as a number -->
+    <input type="number" v-model.number="age"><br>
+    <input v-model.trim="msg">
+    <ul>
+      <li>msg: {{ msg }}</li>
+      <li>age: {{ age }}</li>
+    </ul>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <section>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            name: 'Vue.js',
+            message: 'The message'
+          }
+        }
+      }).mount('#app')
+    </script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            name: 'Vue.js',
+            message: 'The message'
+          }
+        }
+      }).mount('#app2')
+    </script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            name: 'Vue.js',
+            checked: true
+          }
+        }
+      }).mount('#app3')
+    </script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            checkedNames: ['Jack', 'Mike']
+          }
+        }
+      }).mount('#app4')
+    </script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            picked: ''
+          }
+        }
+      }).mount('#app5')
+    </script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            selected: ''
+          }
+        }
+      }).mount('#app6')
+    </script>
+  </section>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          selected: 'A',
+          options: [
+            { text: 'One', value: 'A' },
+            { text: 'Two', value: 'B' },
+            { text: 'Three', value: 'C' }
+          ]
+        }
+      }
+    }).mount('#app7')
+  </script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          msg: "Sample Text",
+          age: 0
+        }
+      }
+    }).mount('#app8')
+  </script>
+</body>
+</html>

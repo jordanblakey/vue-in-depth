@@ -1,0 +1,149 @@
+<html>
+  <head></head>
+  <body>
+    <div id="app">
+      <!-- VUE ESSENTIALS CHEAT SHEET -->
+
+      <!-- EXPRESSIONS -->
+      <p>I have a {{ product }}</p>
+      <p>{{ product + 's' }}</p>
+      <p>{{ isWorking ? 'YES' : 'NO' }}</p>
+      <p>{{ product.getSalePrice() }}</p>
+
+      <!-- DIRECTIVES -->
+      <!-- Display based on truthiness -->
+      <p v-if="inStock"><{{ product }}</p>
+      <p v-else-if="onSale">...</p>
+      <p v-else>...</p>
+      <!-- Toggle display: none -->
+      <p v-show="showProductDetails">...</p>
+      <!-- Two way data binding -->
+      <p v-model="firstName">...</p>
+      <!-- TWDB:Modifiers -->
+      <p v-model.lazy.number.trim="lastName">...</p>
+
+      <!-- LIST RENDERING -->
+      <li v-for="item in items" :key="item.id">
+        {{ item }}
+      </li>
+      <!-- To access the position in the array -->
+      <li v-for="(item, index) in items">{{ item + ': ' + index}}</li>
+      <!-- To iterate through objects -->
+      <li v-for="(key, value) in object">{{ key + ': ' + value }}</li>
+      <!-- Using v-for with a component -->
+      <cart-product v-for="item in products" :product="item" :key="item.id" />
+
+      <!-- BINDING -->
+      <a v-bind:href="url">...</a>
+      <!-- Shorthand -->
+      <a :href="url">...</a>
+      <!-- if isActive is truthy, apply class "active" -->
+      <div :class="{{ active: isActive }}">...</div>
+      <!-- Style color to value of activeColor -->
+      <div :style="{ color: activeColor }"></div>
+
+      <!-- ACTIONS/EVENTS -->
+      <button v-on:click="addToCart">...</button>
+      <button @click="addToCart">...</button>
+      <!-- Arguments can be passed -->
+      <button @click="addToCart(product)">...</button>
+      <!-- Modifiers -->
+      <button @submit.prevent="addProduct">...</button>
+      <img @mouseover.once="showImage">...
+      <!-- .stop: stop all event propagation -->
+      <!-- .self: Only trigger if event.target is element itself -->
+      <!-- Keyboard entry example -->
+      <input type="text" @keyup.enter="submit">
+      <input type="text" @keyup.ctrl.c="onCopy">
+      <!-- Key & Mouse Modifiers
+      .tab .up .ctrl .delete .down .alt .esc .left .shift .space .right .meta
+      .left .right .middle
+      -->
+      <ButtonCounter v-on:incrementBy="incWithVal" />
+
+      <header>
+        <slot name="header"></slot>
+      </header>
+      <slot>
+        Only displayed if no slot content.
+      </slot>
+      <footer>
+        <slot name="footerr"></slot>
+      </footer>
+
+      <my-component>
+        <p>This will go in the slot</p>
+      </my-component>
+
+      <app-layout>
+        <h1 slot="header">This content goes in the header slot.</h1>
+        <p>This content goes in the main slot.</p>
+        <p slot="footer">This content goes in the footer slot.</p>
+      </app-layout>
+
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      // COMPONENT ANATOMY
+      Vue.component('my-component', {
+        components: {
+          ProductComponent, ReviewComponent, ButtonCounter
+        },
+        props: {
+          message: String,
+          porduct: Object,
+          email: {
+            type: String,
+            required: true,
+            default: "none",
+            validator: function (value) {
+              // should return true if value is valid.
+            }
+          },
+          data: function(){
+            // must be a function
+            return {
+              firstName: 'Vue',
+              lastName: 'Mastery'
+            }
+          },
+          computed: {
+            // return cached values until dependencies change
+            fullName: function() {
+              return this.firstName + ' ' + this.lastName
+            }
+          },
+          watch: {
+              // called when firstName changes value
+            firstName: function(value, oldValue) {
+              // ...
+            }
+          },
+          methods: {
+          inWithVal: function(toAdd) {/*...*/}
+          // Inside button-counter template:
+          // this.$emit('incrementBy', 5) // data sent to parent component
+          },
+          // Can also use backticks for multi-line templates
+          templates: '<span>{{ message }}</span>',
+
+          // LIFECYCLE METHODS
+          beforeCreate: function() { return; },
+          created: function() { return; },
+          beforeMount: function() { return; },
+          mounted: function() { return; },
+          beforeUpdate: function() { return; },
+          updated: function() { return; },
+          beforeDestroy: function() { return; },
+          destroyed: function() { return; }
+        }
+      })
+    </script>
+  </body>
+</html>
+
+<!-- LIBRARIES YOU SHOULD KNOW -->
+<!-- Vue CLI -->
+<!-- Vue Router -->
+<!-- Vue DevTools -->
+<!-- Nuxt.js -->

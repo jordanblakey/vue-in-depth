@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Component Registration</title>
+</head>
+<body>
+  <div id="app">
+    <component-a></component-a>
+    <component-b></component-b>
+    <component-c></component-c>
+  </div>
+
+  <div id="app2">
+    <component-a></component-a>
+    <component-b></component-b>
+    <component-c></component-c>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const app = Vue.createApp({})
+    app.component('ComponentA', {
+      template: `<p>Component A</p>`
+    })
+    app.component('ComponentB', {
+      template: `<p>Component B</p>`
+    })
+    app.component('ComponentC', {
+      template: `<p>Component C</p>`
+    })
+
+    app.mount('#app')
+  </script>
+  <script>
+    const ComponentA = {
+      template: `<h1>Component A</h1>`
+    }
+    const ComponentB = {
+      template: `<h1>Component B</h1>`
+    }
+    const ComponentC = {
+      template: `<h1>Component C</h1>`
+    }
+
+    app2 = Vue.createApp({
+      data() {
+        return {
+
+        }
+      },
+      components: {
+        ComponentA,
+        ComponentB,
+        ComponentC
+      }
+    })
+
+    app2.mount('#app2')
+  </script>
+</body>
+</html>

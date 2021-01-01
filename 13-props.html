@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Components: Props</title>
+  <style>
+    .blog-post {
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background: #fcfcfc;
+      padding: 8px 12px;
+    }
+    .blog-post h1, .blog-post p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <blog-post title="My journey with Vue"></blog-post>
+    <!-- Dynamically assign the value of a variable -->
+    <blog-post :title="post.title"></blog-post>
+    <!-- Dynamically assign the value of a complex expression -->
+    <blog-post :title="post.title + ' by ' + post.author.name"></blog-post>
+    <!-- Even though '42' is static, we need v-bind to tell Vue that this is a JS expression rather than a string -->
+    <blog-post :likes="42"></blog-post>
+    <blog-post :likes="post.likes"></blog-post>
+    <blog-post title="Published Post" is-published></blog-post>
+    <blog-post title="Unpublished Post" :is-published="post.isPublished"></blog-post>
+    <blog-post :comment-ids="[234, 266, 273]"></blog-post>
+    <blog-post :author="{name: 'Veronica', company: 'Veridian Dynamics'}"></blog-post>
+    <blog-post :author="post.author"></blog-post>
+    <blog-post v-bind="post.author"></blog-post>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          post: {
+            title: 'This is the post\'s title!',
+            author: {
+              name: 'John Smith',
+              company: 'Vermillion Patterns'
+            },
+            likes: 11,
+            isPublished: false,
+            commentIds: []
+          }
+        }
+      }
+    })
+    app.component('blog-post', {
+      props: {
+        title: String,
+        likes: Number,
+        isPublished: Boolean,
+        commentIds: Array,
+        author: Object,
+        name: String,
+        company: String,
+        callback: Function,
+        contactsPromise: Promise // Or any other constructor
+      },
+      template: `
+        <div class="blog-post">
+          <h1>{{ title }} </h1><p>{{ author }}{{ name ? name : '' }} {{ company ? company : ''}}<br><span class="likes">{{ likes ? 'Liked ' + likes + ' times' : '' }}</span> Status: {{ isPublished ? 'Published' : 'Not Published' }} {{ commentIds ? 'Comments: ' + commentIds.length : ''}}</p>
+        </div>
+      `
+    })
+
+    app.mount('#app')
+  </script>
+</body>
+</html>

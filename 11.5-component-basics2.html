@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Component Basics 2</title>
+  <style>
+    .demo-alert-box {
+      font-family: sans-serif;
+      background: rgba(255, 0, 0, 0.2);
+      border: 1px solid rgba(255,0,0,0.2);
+      padding: 8px 16px;
+      border-radius: 3px;
+    }
+    .demo-alert-box strong {
+      margin-right: 4px;
+    }
+
+    .demo {
+      font-family: sans-serif;
+      border: 1px solid #eee;
+      border-radius: 2px;
+      padding: 20px 30px;
+      margin-top: 1em;
+      margin-bottom: 40px;
+      user-select: none;
+      overflow-x: auto;
+    }
+
+    .tab-button {
+      padding: 6px 10px;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      background: #f0f0f0;
+      margin-bottom: -1px;
+      margin-right: -1px;
+    }
+
+    .tab-button:hover {
+      background: #e0e0e0;
+    }
+
+    .tab-button:active {
+      background: e0e0e0;
+    }
+
+    .demo-tab {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <input v-model="searchText" />
+    <input :value="searchText" @input="searchText = $event.target.value" />
+    <custom-input v-model="searchText"></custom-input>
+    <custom-input2 v-model="searchText"></custom-input2>
+    <p>{{ searchText }}</p>
+    <alert-box>Something bad happened.</alert-box>
+  </div>
+  <div id="dynamic-component-demo" class="demo">
+    <button v-for="tab in tabs" :key="tab" :class="['tab-button', { active: currentTab === tab }]" v-on:click="currentTab = tab">{{ tab }}</button>
+    <component :is="currentTabComponent" class="tab"></component>
+  </div>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          searchText: "placeholder searchText"
+        }
+      }
+    })
+
+    app.component('custom-input', {
+      props: ['modelValue'],
+      emits: ['update:modelValue'],
+      template: `
+        <input
+          :value="modelValue"
+          @input="$emit('update:modelValue', $event.target.value)"
+        />
+      `
+    })
+
+    app.component('custom-input2', {
+      props: ['modelValue'],
+      emits: ['update:modelValue'],
+      template: `<input v-model="value">`,
+      computed: {
+        value: {
+          get() {
+            return this.modelValue
+          },
+          set(value) {
+            this.$emit('update:modelValue', value)
+          }
+        }
+      }
+    })
+
+    app.component('alert-box', {
+      template: `
+        <div class="demo-alert-box">
+          <strong>Error!</strong>
+          <slot></slot>
+        </div>
+      `
+    })
+
+    app.mount('#app')
+  </script>
+  <script>
+    const app2 = Vue.createApp({
+      data() {
+        return {
+          currentTab: 'Home',
+          tabs: ['Home', 'Posts', 'Archive']
+        }
+      },
+      computed: {
+        currentTabComponent() {
+          return 'tab-' + this.currentTab.toLowerCase()
+        }
+      }
+    })
+
+    app2.component('tab-home', {
+      template: `<div class="demo-tab">Home component</div>`
+    })
+    app2.component('tab-posts', {
+      template: `<div class="demo-tab">Posts component</div>`
+    })
+    app2.component('tab-archive', {
+      template: `<div class="demo-tab">Archive component</div>`
+    })
+
+    app2.mount('#dynamic-component-demo')
+  </script>
+</body>
+</html>
